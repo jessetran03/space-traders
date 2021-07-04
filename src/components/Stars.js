@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 
 export default function Stars() {
     const coordinates = []
-    for(let i = 0; i < 2000; i++){
+    for(let i = 0; i < 3000; i++){
       coordinates[i] = [(Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20]
     }
     return (

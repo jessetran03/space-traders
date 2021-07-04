@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
-import ApiService from '../services/api-service';
+import ApiService from "../services/api-service";
 
 export default function Dashboard() {
-  const [data, setData] = useState([]);
+  const [user, setUser] = useState();
+  const [status, setStatus] = useState();
 
   useEffect(() => {
-    ApiService.getData()
-      .then((data) => setData(data))
+    ApiService.getUser()
+      .then((user) => setUser(user.user))
+      .catch((error) => console.error({ error }));
+    ApiService.getStatus()
+      .then((status) => setStatus(status.status))
       .catch((error) => console.error({ error }));
   }, []);
+
+  if (!user || !status) {
+    return(
+      <div className="p-3 m-2 mx-auto bg-white rounded-xl w-max bg-opacity-10">
+        loading...
+      </div>
+    )
+  }
 
   return (
     <div className="relative z-10">
@@ -17,14 +29,14 @@ export default function Dashboard() {
       </header>
 
       <div className="p-3 m-2 mx-auto bg-white rounded-xl w-max bg-opacity-10">
-        {data.length > 0 && data.status}
+        {status}
       </div>
 
       <div className="max-w-sm p-3 m-2 mx-auto bg-white shadow-md rounded-xl bg-opacity-10">
-        <h2>{data.length > 0 && data.user.username}</h2>
-        <p>Ship Count: {data.length > 0 && data.user.shipCount}</p>
-        <p>Structure Count: {data.length > 0 && data.user.structureCount}</p>
-        <p>Credits: {data.length > 0 && data.user.credits}</p>
+        <h2>{user.username}</h2>
+        <p>Ship Count: {user.shipCount}</p>
+        <p>Structure Count: {user.structureCount}</p>
+        <p>Credits: {user.credits}</p>
       </div>
     </div>
   );

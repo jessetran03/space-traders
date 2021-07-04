@@ -13,7 +13,6 @@ export default function ThreejsBacgkround() {
           <ambientLight intensity={1} />
           <Stars />
           <BigSphere />
-          <Text />
           <GroundPlane />
         </Suspense>
       </Canvas>
@@ -23,7 +22,7 @@ export default function ThreejsBacgkround() {
 
 function GroundPlane() {
   return (
-    <mesh receiveShadow rotation={[5, 0, 0]} position={[0, -50, 0]}>
+    <mesh receiveShadow rotation={[5, 0, 0]} position={[0, -500, 0]}>
       <planeBufferGeometry attach="geometry" args={[100, 100]} />
       <meshStandardMaterial attach="material" color="white" />
     </mesh>
@@ -35,13 +34,13 @@ function BigSphere(props) {
 
   useFrame(() => {
     mesh.current.rotation.x += 0.01;
-    mesh.current.position.x += 0.0001;
+    mesh.current.position.z += 0.02;
   });
 
   return (
-    <mesh ref={mesh} {...props}>
+    <mesh ref={mesh} position={[0, 0, -100]} {...props}>
       <dodecahedronGeometry />
-      <meshPhongMaterial color="#eea" />
+      <meshPhongMaterial color='#eef' />
     </mesh>
   );
 }

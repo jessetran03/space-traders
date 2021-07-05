@@ -4,6 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import Stars from "./Stars";
 
 export default function ThreejsBacgkround() {
+  const textOn = false;
   return (
     <div className="fixed w-full h-full">
       <Canvas>
@@ -11,6 +12,7 @@ export default function ThreejsBacgkround() {
           <OrbitControls />
           <directionalLight />
           <ambientLight intensity={1} />
+          {textOn && <Text />}
           <Stars />
           <BigSphere />
           <GroundPlane />

@@ -1,4 +1,4 @@
-const token = "c4b0d344-abab-435d-8f33-f780b2b5f438";
+const token = "11966585-be99-4671-95ec-4e720ffaa008";
 const url = "https://api.spacetraders.io";
 
 const ApiService = {
@@ -8,12 +8,26 @@ const ApiService = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((error) => console.error({ error }))
   },
 
   async getStatus() {
     return fetch(`${url}/game/status`)
-      .then((res) => res.json());
+      .then((res) => res.json())
+      .catch((error) => console.error({ error }))
+  },
+
+  async getLoans() {
+    return fetch(`${url}/types/loans`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .catch((error) => console.error({ error }))
   },
 };
 

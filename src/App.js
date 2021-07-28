@@ -1,12 +1,10 @@
-import ThreejsBackground from './components/ThreejsBackground';
+//import ThreejsBackground from './components/ThreejsBackground';
 import Dashboard from './components/Dashboard';
 
 function App() {
-  const backgroundOn = false;
   return (
     <div className="App">
-      {backgroundOn && <ThreejsBackground />}
-
+      {/*<ThreejsBackground />*/}
       <Dashboard />
     </div>
   );

@@ -1,4 +1,4 @@
-const token = "11966585-be99-4671-95ec-4e720ffaa008";
+const token = "7d020916-c053-4d8a-93f4-318ebd8749e1";
 const url = "https://api.spacetraders.io";
 
 const ApiService = {
